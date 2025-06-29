@@ -14,7 +14,7 @@ public:
         }
         while(left<=right){
             if(nums[left]+nums[right]<=target){
-                count = (count + pow[right - left]) % Modulo;
+                count = (count + pow[right - left]) % Modulo;//sab element pr choice hogi take or not take isliye 2^n combination aatein h
                 left++;
             }
             else{
