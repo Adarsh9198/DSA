@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int n;
+    long long n;
     int solve(vector<vector<int>>& events,int idx,int k,vector<vector<int>> &dp){
         if(idx>=n || k==0){
             return 0;
@@ -15,6 +15,11 @@ public:
         for(;j<events.size();j++){
             if(events[j][0]>events[idx][1]) break;
         }
+
+        // using upper_bound fn i.e binary search  to find idx of evnt with start>end
+        // vector<int>temp={end,INT_MAX,INT_MAX};
+        // int j=upper_bound(events.begin()+idx+1,events.end(),temp) -events.begin();
+        // idx pr khade h toh uske baad se start kiya.....aur subtract kiya kyoki idx chahiye 
         int take=value +solve(events,j,k-1,dp);
 
         return dp[idx][k]=max(skip,take);
