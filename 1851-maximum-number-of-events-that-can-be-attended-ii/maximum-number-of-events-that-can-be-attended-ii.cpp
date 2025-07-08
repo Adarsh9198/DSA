@@ -1,6 +1,6 @@
 class Solution {
 public:
-    long long n;
+    int n;
     int getNext(vector<vector<int>>& events,int l,int currJobEnd){
         int r=n-1;
         int result=n;
