@@ -8,7 +8,7 @@ public:
             freeTime.push_back(startTime[i]-endTime[i-1]);
         }
         freeTime.push_back(eventTime-endTime[endTime.size()-1]);
-
+        //using sliding window to find window of k+1 size with max sum 
         int i=0;
         int j=0;
         int maxFree=0;
