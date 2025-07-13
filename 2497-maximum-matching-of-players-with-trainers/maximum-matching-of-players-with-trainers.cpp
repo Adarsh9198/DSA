@@ -5,7 +5,7 @@ public:
         sort(trainers.begin(),trainers.end());
         int res=0;
         for(int i=0;i<players.size();i++){
-            for(int j=i;j<trainers.size();j++){
+            for(int j=i;j<trainers.size();j++){//agar pehle chota hai toh uska use kabhi hoga hi nhi
                 if(players[i]<=trainers[j]){
                     res++;
                     trainers[j]=INT_MIN;//ek player ko assign ho gya
