@@ -10,26 +10,37 @@
  */
 class Solution {
 public:
-    ListNode* reverseLL(ListNode* head){
-        if(head==NULL || head->next==NULL){
-            return head;
-        }
-        ListNode* last=reverseLL(head->next);
-        head->next->next=head;
-        head->next=NULL;
-        return last;
+    // ListNode* reverseLL(ListNode* head){
+    //     if(head==NULL || head->next==NULL){
+    //         return head;
+    //     }
+    //     ListNode* last=reverseLL(head->next);
+    //     head->next->next=head;
+    //     head->next=NULL;
+    //     return last;
+    // }
+//     int getDecimalValue(ListNode* head) {
+//         head=reverseLL(head);
+//         int res=0;
+//         int power=0;
+//         while(head!=NULL){
+//             if(head->val==1){
+//                 res+=pow(2,power);
+//             }
+//             power++;
+//             head=head->next;
+//         }
+//         return res;
+//     }
+// };
+
+int getDecimalValue(ListNode* head) {
+    int res=0;
+    while(head!=NULL){
+        res =(res<<1) |(head->val);
+        head=head->next;
     }
-    int getDecimalValue(ListNode* head) {
-        head=reverseLL(head);
-        int res=0;
-        int power=0;
-        while(head!=NULL){
-            if(head->val==1){
-                res+=pow(2,power);
-            }
-            power++;
-            head=head->next;
-        }
-        return res;
-    }
+    return res;
+  }
 };
+//T.C=>O(1)
