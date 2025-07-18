@@ -8,6 +8,9 @@ public:
         //row 2=>(nums[j]+nums[i])==2.....and so on
         vector<vector<int>>dp(k,vector<int>(n,1));
         int maxLen=1;
+
+        //VARIANT OF LIS 
+        //dp[mod][i]=length of longest sub till that index
         for(int i=1;i<n;i++){
             for(int j=0;j<i;j++){
                int mod= (nums[j]+nums[i])%k;
