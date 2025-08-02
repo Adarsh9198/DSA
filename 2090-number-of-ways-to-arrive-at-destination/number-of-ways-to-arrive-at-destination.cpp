@@ -1,6 +1,8 @@
 class Solution {
 public:
     //Dijkstra Algorithm Problem
+    //T.C : O(((V+E)*log(V)) //log (v) for push,pop op and O(v+E) traversal in graph
+    //S.C : O(V+E)   map 
     typedef pair<long,long>P;
     const int M=1e9+7;
     int countPaths(int n, vector<vector<int>>& roads) {
