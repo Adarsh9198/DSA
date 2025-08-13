@@ -12,10 +12,10 @@ public:
             maxFreq=max(maxFreq,freq[s[right]-'A']);
             while((right-left+1)-maxFreq > k){
                 freq[s[left]-'A']--;
-                maxFreq=0;
-                for(int i=0;i<26;i++){
-                    maxFreq=max(maxFreq,freq[i]);
-                }
+                //maxFreq=0;
+                // for(int i=0;i<26;i++){
+                //     maxFreq=max(maxFreq,freq[i]);
+                // }
                 left++;
             }
             if((right-left+1)-maxFreq<=k){
