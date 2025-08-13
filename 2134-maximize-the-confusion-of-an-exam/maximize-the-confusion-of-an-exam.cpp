@@ -1,26 +1,24 @@
 class Solution {
 public:
-    int maxConsecutiveAnswers(string s, int k) {
-        int n=s.length();
-        int right=0;
-        int left=0;
-        int maxFreq=0;
-        int maxLen=0;
-        vector<int>freq(26,0);
-        while(right<n){
-            freq[s[right]-'A']++;
-            maxFreq=max(maxFreq,freq[s[right]-'A']);
-            while((right-left+1)-maxFreq > k){
-                freq[s[left]-'A']--;
-                //maxFreq=0;
-                // for(int i=0;i<26;i++){  using this T.C->O(2N)*26 ...without it  O(2N)
-                //     maxFreq=max(maxFreq,freq[i]);
-                // }
+    int maxConsecutiveAnswers(string answerKey, int k) {
+        int n = answerKey.length();
+        int left = 0, right = 0;
+        int maxFreq = 0, maxLen = 0;
+        vector<int> freq(2,0); // freq[0] = count of 'T', freq[1] = count of 'F'
+        while (right < n) {
+            // Current char ka freq update
+            int idx = (answerKey[right] == 'T') ? 0 : 1;
+            freq[idx]++;
+            // Max frequency update
+            maxFreq = max(maxFreq, freq[idx]);
+            // Agar flips > k ho gaye toh left se shrink karo
+            while ((right - left + 1) - maxFreq > k) {
+                int lidx = (answerKey[left] == 'T') ? 0 : 1;
+                freq[lidx]--;
                 left++;
             }
-            if((right-left+1)-maxFreq<=k){
-                maxLen=max(maxLen,right-left+1);
-            }
+            // Max length update
+            maxLen = max(maxLen, right - left + 1);
             right++;
         }
         return maxLen;
