@@ -15,25 +15,18 @@ public:
         int startIndex = -1;
          // Step 2: Sliding window
         while (right<n) {
-            // If this char is needed, reduce freq and increase count
-            if (hash[s[right]] > 0) {
-                count++;
-            }
-            hash[s[right]]--; // decrease freq (even if negative for extra chars)
-            right++;
-             // Step 3: When we have all characters
-            while (count == m) {
-                if (right-left < minLen) {
-                    minLen = right-left;
-                    startIndex = left;
+            if(hash[s[right]]>0) count=count+1;
+            hash[s[right]]--;
+            while(count==m){
+                if(right-left+1<minLen){
+                    minLen=right-left+1;
+                    startIndex=left;
                 }
-                // Try to shrink from left
                 hash[s[left]]++;
-                if (hash[s[left]] > 0) {
-                    count--; // a needed char went missing from the window
-                }
+                if(hash[s[left]]>0) count=count-1;
                 left++;
             }
+            right=right+1;
         }
         return (startIndex == -1) ? "" : s.substr(startIndex, minLen);
     }
