@@ -17,9 +17,9 @@ public:
             while (!pq.empty()) {
                 auto [currentDist, currentNode] = pq.top();
                 pq.pop();
-                // if (currentDist > dist[currentNode]) {
-                //     continue;
-                // }
+                if (currentDist > dist[currentNode]) {
+                    continue;
+                }
                 for (const auto& neighborPair : adj[currentNode]) {
                     int neighborNode = neighborPair.first;
                     int edgeWeight = neighborPair.second;
